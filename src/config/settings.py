@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# OpenAI Configuration
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Set OpenAI API key in environment
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
 
 # Ensure data directory path is absolute
 DATA_DIR = Path(__file__).parent.parent.parent / "data"

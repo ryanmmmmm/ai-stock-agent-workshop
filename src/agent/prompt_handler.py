@@ -1,14 +1,14 @@
 from typing import Dict, Any, List
-from openai import OpenAI  # Change to synchronous client
+import os
+from openai import OpenAI
 from .data_fetcher import DataFetcherAgent
-from ..config.settings import OPENAI_API_KEY
 
 class PromptHandler:
     """Handles natural language prompts and converts them to agent actions"""
     
     def __init__(self, agent: DataFetcherAgent):
         self.agent = agent
-        self.llm_client = OpenAI(api_key=OPENAI_API_KEY)  # Use synchronous client
+        self.llm_client = OpenAI()  # Will use OPENAI_API_KEY from environment
         
     async def handle_prompt(self, prompt: str) -> str:
         """
